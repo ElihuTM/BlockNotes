@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block title %} Register {% endblock  %}
+
+{% block content %}
+    {% from 'macro.html' import render_field %}
+    
+    <form method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        {{ render_field(form.username) }}
+        {{ render_field(form.email) }}
+        {{ render_field(form.password) }}
+        {{ render_field(form.confirm) }}
+        {{ render_field(form.accept_tos) }}
+        {{ form.honeypot }}
+        <input type="submit" value="Register">
+    </form>
+
+{% endblock  %}
