@@ -1,15 +1,8 @@
 import os
 import mysql.connector as ms
 
-#mydb = ms.connect(
-#    host = 'localhost',
-#    user = 'Admin',
-#    passwd = 'qwerty0000',
-#  database = 'blocknote',
-#)   
- 
 class Config(object):
-    SECRET_KEY  = 'my_secret_key_di_que_eres_puto'
+    SECRET_KEY  = os.urandom(12)
 
 class DevelopmentConfig(Config):
     DEBUG = True

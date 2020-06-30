@@ -1,0 +1,9 @@
+USE blocknote;
+
+CREATE TABLE IF NOT EXISTS Users(
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(45) NOT NULL,
+  	email VARCHAR(45) NOT NULL,
+    password VARCHAR(66) NOT NULL,
+    PRIMARY KEY(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
