@@ -6,11 +6,14 @@ from flask import make_response
 from config import DevelopmentConfig
 
 from flask_wtf import CSRFProtect
+from flaskext.mysql import MySQL
+
 import forms 
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
 csrf = CSRFProtect()
+mydb = MySQL()
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -31,6 +34,12 @@ def index():
 def login():
     login_form = forms.LoginForm(request.form)
 
+    cursor = mydb.connect().cursor()
+    cursor.execute('SELECT * FROM Users')
+
+    for x in cursor:
+        print(x)
+    
     if request.method == 'POST' and login_form.validate():
         session['username'] = login_form.username.data
         return redirect( url_for('home') )
@@ -55,5 +64,6 @@ def register():
 
 if __name__ == '__main__':
     csrf.init_app(app)
+    mydb.init_app(app)
 
     app.run( port=8000 )
