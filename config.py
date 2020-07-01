@@ -2,7 +2,7 @@ import os
 import mysql.connector as ms
 
 class Config(object):
-    SECRET_KEY  = os.urandom(12)
+    SECRET_KEY  = 'my_secret_key_di_que_eres_puto'
 
 class DevelopmentConfig(Config):
     DEBUG = True

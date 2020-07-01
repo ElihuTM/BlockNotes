@@ -41,4 +41,3 @@ class RegisterForm(Form):
         validators.Required( message='Required field')
     ])
     honeypot = HiddenField('', [ empty_field ])
-    
