@@ -1,0 +1,264 @@
+*, *:before, *:after{ /** para que el tamaño total no sea la suma entre el margin y el padding, sino que le podamos establecer nosotros el tamaño total**/
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /** Reset para REMs -62.5% = 10px de 16px**/
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+}
+
+h1, h2, h3, h4 { font-family: 'PT Sans', sans-serif; }
+
+h4 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 2.6rem;
+}
+
+h2 {
+    font-weight: 3.2rem;
+}
+
+h1 { 
+    font-weight: 3.8rem;
+}
+
+img{
+    max-width: 100%;
+}
+
+a {
+    text-decoration: None;
+}
+
+/** UTILITIES **/
+
+.container {
+    width: 95%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.center-content {
+    max-width: 80rem;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/**  GRID **/
+
+@media(min-width: 768px) {
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .center-columns {
+        justify-content: center;
+    }
+    
+    .columns-1 {
+        flex: 0 0 calc( 8.33% - 1rem );
+    }
+
+    .columns-2 {
+        flex: 0 0 calc( 16.66% - 1rem);
+    }
+
+    .columns-3 {
+        flex: 0 0 calc( 25% - 1rem );
+    }
+
+    .columns-4 {
+        flex: 0 0 calc( 33.33% - 1rem );
+    }
+
+    .columns-5 {
+        flex: 0 0 calc( 41.66% - 1rem );
+    }
+
+    .columns-6 {
+        flex: 0 0 calc( 50% - 1rem );
+    }
+
+    .columns-8 {
+        flex: 0 0 calc( 66.66% - 1rem );
+    }
+
+    .columns-10 {
+        flex: 0 0 calc( 83.3% - 1rem );
+    }
+
+    .columns-12 {
+        flex: 0 0 100%;
+    }
+}
+
+/** BOTONES **/
+
+.btn{
+    display: block;
+    text-align: center;
+    padding: .5rem 2rem;
+    margin: 2rem 0;
+    color: white;
+    text-decoration: none;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 2rem;
+    flex: 0 0 100%;
+    border: 0;
+    border-radius: 1rem;
+    transition: background-color .3s ease-in-out;
+}
+
+.btn a {
+    color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(1, 122, 192);
+}
+
+@media(min-width: 768px) {
+    .btn {
+        display: inline-block;
+        flex: 0 0 auto;
+    }
+}
+
+.black-btn{
+    background-color: #333333;
+}
+
+.white-btn a{
+    color: black !important;
+}
+
+/** MESSAGES **/
+.flash-message {
+    background-color: rgb(187, 222, 245);
+    margin: 0;
+    padding: 1rem;
+}
+
+.flash-message li{
+    list-style: none;
+}
+
+.errors {
+    background-color: rgb(253, 160, 160);
+    flex: 100%;
+}
+
+.errors li {
+    list-style: none;
+}
+
+/** HEADER **/
+.site-header {
+    background-color: #333333;
+}
+.site-header h1 {
+    margin: 0;
+}
+
+.barra {
+    padding: 1rem 2rem;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 3.2rem;
+}
+.title a { color: white; }
+.title span { font-weight: 700; }
+
+.mobile-menu {
+    color: white;
+    display: inline-block;
+}
+
+@media(min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+.navigation {
+    display: none;
+}
+
+.search-area {
+    display: none;
+}
+
+
+@media(min-width: 768px ) {
+    .navigation {
+        display: flex;
+        font-size: 2rem;
+        padding-top: 1.5rem;
+    }
+    
+    .navigation a{
+        color: white;
+    }
+    
+    .navigation a:hover {
+        color: rgb(1, 122, 192);
+    }
+    
+    .search-area {
+        display: inline-block;
+        padding-top: 1.5rem;
+    }
+    
+    .search-area input,
+    .search-area button {
+        height: 3rem;
+    }
+    
+}
+
+/** FOOTER **/
+.site-footer {
+    background-color: #333333 ;
+    color: white;
+}
+
+.site-footer p {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 2rem 0;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media(min-width: 768px ) {
+   .copyright{
+       text-align: left;
+   }
+}
+
+.copyright {
+    order: -1;
+}

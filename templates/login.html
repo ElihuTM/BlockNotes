@@ -1,17 +1,51 @@
 {% extends 'base/base.html' %}
-
 {% block title %} Login {% endblock  %}
 
-{% block content %}
-    {% from 'macro.html' import render_field %}
-    
-    <form method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        
-        {{ render_field(form.username) }}
-        {{ render_field(form.password) }}
-        {{ form.honeypot }}
-        <input type="submit" value="Login">
-    </form>
+{% block css_styles %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock  %}
 
+<!--  ########################################################## -->
+
+{% block header %}
+    <header class="site-header">
+        <h1 class="title center-text">
+            <a href="/login"> Block<span>Note</span> </a>
+        </h1>
+    </header>
+{% endblock  %}
+
+{% block content %}
+{% from 'macro.html' import render_field %}
+    <main class="main-content">
+        <form method="POST" class="container center-content login-form center-text">
+            <div class="content-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                
+                {{ render_field(form.username) }}
+                {{ render_field(form.password) }}
+                {{ form.honeypot }}
+                
+                <div class="submit">
+                    <input type="submit" value="Login" class="btn black-btn btn-submit">
+                </div>
+
+            </div>
+        </form>
+
+        <div class="container register">
+            <div class="submit">
+                <button class="btn black-btn btn-submit"> <a href="/register"> Register </a></button>
+            </div>
+        </div>
+    </main>
+        
+{% endblock  %}
+
+{% block footer %}
+<footer class="site-footer">
+    <div class="container center-text">
+            <p class="copyright">&copy; BlockNotes 2020 </p>
+    </div>
+</footer>
 {% endblock  %}

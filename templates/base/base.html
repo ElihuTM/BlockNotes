@@ -4,14 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <script src="https://kit.fontawesome.com/4a15194bcb.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block css_styles%} {% endblock  %}
 
     <title> {% block title %} {% endblock  %} </title>
 </head>
 <body>
+
+    {% block header %}
+        
+    {% endblock  %}
+
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
+        <ul class="flash-message">
            {% for message in messages %}
              <li> {{ message }}</li>  
            {% endfor %}
@@ -23,12 +34,9 @@
         
     {% endblock  %}
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <p class="copyright text-muted">&copy; BlockNotes 2020 </p>
-            </div>
-        </div>
-    </footer>
+
+    {% block footer %}
+        
+    {% endblock  %}
 </body>
 </html>

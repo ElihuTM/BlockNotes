@@ -1,14 +1,60 @@
-{% macro render_field(field) %}
-    
-    <dt> {{ field.label }}
-    <dd> {{ field(**kwargs)|safe}}
-    {% if field.errors %}
-        <ul class=errors>
-            {% for error in field.errors %}
-                <li> {{ error }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    </dd>
+{% macro render_header() %}
+    <header class="site-header">
+        <div class="container barra grid center-columns">
 
+            <div class="title center-text columns-2">
+                <a href="/"> Block<span>Note</span> </a>
+            </div>
+
+            <a href="#nav" class="mobile-menu columns-1"> <i class="fas fa-ellipsis-v"></i> </a>
+
+            <div class="search-area columns-4 center-text">
+                <dd>
+                    <input type="search" name="search" id="search" placeholder="Search">
+                    <button> <i class="fas fa-search"></i> </button>
+                </dd>
+            </div>
+
+            <nav class="navigation columns-6 grid">
+                <a href="/"> Home</a>
+                <a href="/my_projects"> My projects </a>
+                <a href="/"> My friens </a>
+                <a href="/"> My accout </a>
+                <a href="/logout"> Logout </a>
+            </nav>
+
+        </div> 
+    </header>    
+{% endmacro %}
+
+{% macro render_footer() %}
+    <footer class="site-footer">
+        <div class="container footer-container grid center-columns">
+            <nav class="navigation columns-5 grid">
+                <a href="/"> Home</a>
+                <a href="/"> My projects </a>
+                <a href="/"> My friens </a>
+                <a href="/"> My accout </a>
+            </nav>
+
+            <div class="container copyright columns-3 center-text">
+                <p> &copy; BlockNotes 2020 </p>
+            </div>
+        </div>
+    </footer>
+{% endmacro %}
+
+{% macro render_field(field) %}
+    <div class="field">
+        {{ field.label }}
+        {{ field(**kwargs)|safe}}
+        
+        {% if field.errors %}
+            <ul class=errors>
+                {% for error in field.errors %}
+                    <li> {{ error }} </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
 {% endmacro %}
