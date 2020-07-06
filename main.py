@@ -20,7 +20,7 @@ mydb = MySQL()
 
 @app.before_request
 def fefore_request():
-    pages_need_logged = ['index']
+    pages_need_logged = ['index','my_projects']
     pages_doesnt_need_logged = ['login', 'register']
 
     if 'username' not in session:
@@ -38,6 +38,10 @@ def page_not_found(e):
 def index():
     return render_template('index.html')
 
+@app.route('/my_projects', methods=['GET'] )
+def my_projects():
+    return render_template('my_projects.html')
+
 @app.route('/login', methods=['GET','POST'])
 def login():
     login_form = forms.LoginForm(request.form)
@@ -49,14 +53,14 @@ def login():
         username = login_form.username.data
         password = login_form.password.data
         
-        sentence = 'SELECT password FROM Users WHERE username = %s'
-        varibles = (username)
+        sentence = 'SELECT password, username FROM Users WHERE username = %s OR email = %s'
+        varibles = (username, username )
         cursor.execute( sentence, varibles )
         result = cursor.fetchone()
 
         if result is not None and check_password_hash( result[ 0 ], password ):
-            session['username'] = username
-            flash( 'welcome {}'.format(username) )
+            session['username'] = result[ 1 ]
+            flash( 'welcome {}'.format( result[ 1 ] ) )
             return redirect( url_for('index') )
         else:
             flash('username or password incorrect')
@@ -81,6 +85,20 @@ def register():
         email = register_form.email.data
         password = register_form.password.data
         hash_password = generate_password_hash( password )
+
+        sentence = 'Select username, email FROM Users WHERE username = %s OR email = %s'
+        variables = (username, email)
+        cursor.execute(sentence, variables)
+        result = cursor.fetchone()
+        
+        if result is not None:
+            if result[ 0 ] == username:
+                flash('username already exist, please use other username')
+            
+            if result[ 1 ] == email:
+                flash('email already exist, please use other email')
+
+            return render_template('register.html', form=register_form)
 
         sentence = 'INSERT INTO Users(username,email,password,created_date) VALUES(%s,%s,%s,%s)'
         variables = ( username, email, hash_password, datetime.datetime.today() )

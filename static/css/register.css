@@ -1,0 +1,44 @@
+/** FORMS **/
+.register-form {
+    height: max-content;
+}
+
+@media(min-width: 768px ) {
+    .register-form {
+        padding: 0 5rem 5rem 5rem;
+    }
+}
+
+.field {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.field label {
+    flex: 0 0 calc(20% - 1rem);
+    color: #4f4f4f;
+}
+
+.field input:not([type="submit"]) {
+    background-color: rgb(247, 247, 247);
+    flex: 0 0 calc(40% - 1rem);
+    border: .1rem solid #3a3a3a;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.btn {
+    flex: 1;
+}
+
+.submit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+legend {
+    font-size: 2.2rem;
+    color: #4f4f4f;
+}

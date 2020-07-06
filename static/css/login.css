@@ -1,0 +1,48 @@
+.main-content {
+    background-image: url(../img/login.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 50rem;
+}
+
+.login-form {
+    padding: 7rem;
+    max-width: 60rem;
+
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.content-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input:not([type="submit"]), textarea, select
+{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    background-color:white;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;;
+    border-radius: 1rem;
+    max-width: 50rem;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-submit {
+    flex: 0 0 100%;
+}
+
+.register {
+    padding: 0 7rem;
+    max-width: 60rem;
+}

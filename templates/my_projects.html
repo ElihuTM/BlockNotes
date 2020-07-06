@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% from 'macro.html' import render_header %}
+{% from 'macro.html' import render_footer %}
+
+{% block title %} blocknote {% endblock  %}
+
+<!-- ########################################-->
+
+{% block header %} {{ render_header() }} {% endblock  %}
+
+{% block content %} 
+    <main class="container">
+        <h1> My Projects </h1>
+    </main>
+{% endblock  %}
+
+{% block footer %} {{ render_footer() }} {% endblock  %}
